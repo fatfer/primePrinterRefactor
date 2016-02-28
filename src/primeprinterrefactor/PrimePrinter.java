@@ -3,25 +3,21 @@ package primeprinterrefactor;
 
 public class PrimePrinter {
     private static final int numberOfPrimes = 1000;
+    private static final int linesPerPage = 50;
+    private static final int columns = 4;
     
     public static void main(String[] args) {
         PrimePrinterHelper primePrinterHelper = new PrimePrinterHelper();
         int primes[] = primePrinterHelper.generatePrimes();
-        primePrinterHelper.printNumbers(primes, numberOfPrimes);
+        new NumberPrinter(linesPerPage, columns).print(primes, numberOfPrimes);
     }
 }
 
 class PrimePrinterHelper{
 
     private int numberOfPrimes = 1000;
-    private int linesPerPage = 50;
-    private int columns = 4;
     private int ordmax = 30;
     private int primes[] = new int[numberOfPrimes + 1];
-    private int pagenumber;
-    private int pageoffset;
-    private int rowoffset;
-    private int column;
     private int candidate;
     private int primeIndex;
     private boolean possiblyPrime;
@@ -60,8 +56,4 @@ class PrimePrinterHelper{
         }
         return primes;
     }
-
-    public void printNumbers(int numbers[], int numberOfNumbers) {
-        new NumberPrinter(linesPerPage, columns).print(numbers, numberOfNumbers);
-    }  
 }
