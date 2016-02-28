@@ -62,6 +62,6 @@ class PrimePrinterHelper{
     }
 
     public void printNumbers(int numbers[], int numberOfNumbers) {
-        new NumberPrinter(linesPerPage, columns, numbers, numberOfNumbers).invoke();
+        new NumberPrinter(linesPerPage, columns).print(numbers, numberOfNumbers);
     }  
 }

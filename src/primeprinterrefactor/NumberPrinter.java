@@ -4,17 +4,13 @@ package primeprinterrefactor;
 public class NumberPrinter {
     private int linesPerPage;
     private int columns;
-    private int[] numbers;
-    private int numberOfNumbers;
 
-    public NumberPrinter(int linesPerPage, int columns, int[] numbers, int numberOfNumbers){
+    public NumberPrinter(int linesPerPage, int columns){
         this.linesPerPage = linesPerPage;
         this.columns = columns;
-        this.numbers = numbers;
-        this.numberOfNumbers = numberOfNumbers;
     }
 
-    public void invoke(){
+    public void print(int[] numbers, int numberOfNumbers){
         int pagenumber = 1;
         int pageoffset = 1;
         while (pageoffset <= numberOfNumbers) {
