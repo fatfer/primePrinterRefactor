@@ -62,21 +62,36 @@ class PrimePrinterHelper{
     }
 
     public void printNumbers(int numbers[], int numberOfNumbers) {
-        pagenumber = 1;
-        pageoffset = 1;
-        while (pageoffset <= numberOfNumbers) {
-            System.out.println("The First " + numberOfNumbers +
-                    " Prime Numbers --- Page " + pagenumber);
-            System.out.println("");
-            for (rowoffset = pageoffset; rowoffset <= pageoffset + linesPerPage-1; rowoffset++){
-                for (column = 0; column <= columns-1;column++)
-                    if (rowoffset + column * linesPerPage <= numberOfNumbers)
-                        System.out.format("%10d", numbers[rowoffset + column * linesPerPage]);
-                System.out.println();
-            }
-            System.out.println("\f");
-            pagenumber++;
-            pageoffset += linesPerPage * columns;
+        new NumberPrinter(numbers, numberOfNumbers).invoke();
+    }
+    
+    private class NumberPrinter{
+        private int[] numbers;
+        private int numberOfNumbers;
+        
+        public NumberPrinter(int[] numbers, int numberOfNumbers){
+            this.numbers = numbers;
+            this.numberOfNumbers = numberOfNumbers;
         }
+        
+        public void invoke(){
+            pagenumber = 1;
+            pageoffset = 1;
+            while (pageoffset <= numberOfNumbers) {
+                System.out.println("The First " + numberOfNumbers +
+                        " Prime Numbers --- Page " + pagenumber);
+                System.out.println("");
+                for (rowoffset = pageoffset; rowoffset <= pageoffset + linesPerPage-1; rowoffset++){
+                    for (column = 0; column <= columns-1;column++)
+                        if (rowoffset + column * linesPerPage <= numberOfNumbers)
+                            System.out.format("%10d", numbers[rowoffset + column * linesPerPage]);
+                    System.out.println();
+                }
+                System.out.println("\f");
+                pagenumber++;
+                pageoffset += linesPerPage * columns;
+            }
+        }
+        
     }
 }
