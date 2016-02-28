@@ -6,7 +6,7 @@ public class PrimePrinter {
     
     public static void main(String[] args) {
         PrimePrinterHelper primePrinterHelper = new PrimePrinterHelper();
-        int primes[] = primePrinterHelper.invoke();
+        int primes[] = primePrinterHelper.generatePrimes();
         primePrinterHelper.printNumbers(primes, numberOfPrimes);
     }
 }
@@ -30,7 +30,7 @@ class PrimePrinterHelper{
     private int n;
     private int multiples[] = new int[ordmax + 1];
 
-    public int[] invoke(){
+    public int[] generatePrimes(){
 
         candidate = 1;
         primeIndex = 1;
